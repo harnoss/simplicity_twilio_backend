@@ -55,6 +55,7 @@ get '/call/new' do
 	    :from => "+15104661137",
 	    #:ApplicationSid => 'PNe1dcc8f2ffa1d1912fd7b9399c0ea49a',
   		#:url => 'http://dry-fortress-5128.herokuapp.com/call/response',
+      #:url => 'http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient',
   		:url => 'http://secure-temple-4125.herokuapp.com/call/message',
   		#:method => "GET",
   		#:ApplicationSid => 'AP7c4573a2127b25eb675bede58759da0f'
@@ -65,11 +66,17 @@ get '/call/new' do
 end
 
 get '/call/message' do
-    p 'works'
-  Twilio::TwiML::Response.new do |r|
-    r.Say "What time is it?"
-    r.Play 'http://demo.twilio.com/hellomonkey/monkey.mp3'
-  end.text
+    '<?xml version="1.0" encoding="UTF-8"?>
+      <Response>
+        <Say voice="woman">Please leave a message after the tone.</Say>
+        <Record maxLength="20" />
+      </Response>'
+
+  #Twilio::TwiML::Response.new do |r|
+  #  r.Say "What time is it?"
+  #  r.Play 'http://demo.twilio.com/hellomonkey/monkey.mp3'
+  #end.text
+  #p 'works too'
 end
 
 get '/call/response' do
