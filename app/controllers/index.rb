@@ -55,13 +55,17 @@ get '/call/new' do
 	    :from => "+15104661137",
 	    #:ApplicationSid => 'PNe1dcc8f2ffa1d1912fd7b9399c0ea49a',
   		#:url => 'http://dry-fortress-5128.herokuapp.com/call/response',
-  		:url => 'http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient',
+  		:url => 'http://secure-temple-4125.herokuapp.com/call/message',
   		#:method => "GET",
   		#:ApplicationSid => 'AP7c4573a2127b25eb675bede58759da0f'
-      	:StatusCallback => 'http://dry-fortress-5128.herokuapp.com/call/response',
+      	:StatusCallback => 'http://secure-temple-4125.herokuapp.com/call/response',
       	:StatusCallbackMethod => 'get',
   		:Record => true
 		)
+end
+
+get '/call/message' do
+  erb :call
 end
 
 get '/call/response' do
