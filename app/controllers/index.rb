@@ -67,7 +67,8 @@ end
 get '/call/message' do
     p 'works'
   Twilio::TwiML::Response.new do |r|
-    r.Say 'Hello Monkey'
+    r.Say "What time is it?"
+    r.Play 'http://demo.twilio.com/hellomonkey/monkey.mp3'
   end.text
 end
 
