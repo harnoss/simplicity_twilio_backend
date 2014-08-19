@@ -67,15 +67,20 @@ post '/call/message' do
 end
 
 get '/call/response' do
-  	@message = Call.create(callsid: params[:CallSid], 
+  	@call = Call.create(callsid: params[:CallSid], 
   												 to: params[:To], 
   												 from: params[:From], 
   												 record: params[:RecordingUrl]
   												)
-    @message.save!
+    @call.save!
 end
 
-
+get '/call/record' do
+  response.headers['Access-Control-Allow-Origin'] = "*"
+  @calls = Call.all
+  @last_call_record = @calls.last.record
+  {record: @last_call_record}
+end
   
 # Get your Account Sid and Auth Token from twilio.com/user/account
 
