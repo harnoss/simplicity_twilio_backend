@@ -53,29 +53,16 @@ get '/call/new' do
 	@call = @client.account.calls.create(
   		:to => '+15105081935',
 	    :from => "+15104661137",
-	    #:ApplicationSid => 'PNe1dcc8f2ffa1d1912fd7b9399c0ea49a',
-  		#:url => 'http://dry-fortress-5128.herokuapp.com/call/response',
-      #:url => 'http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient',
   		:url => 'http://secure-temple-4125.herokuapp.com/call/message',
-  		#:method => "GET",
-  		#:ApplicationSid => 'AP7c4573a2127b25eb675bede58759da0f'
-      	:StatusCallback => 'http://secure-temple-4125.herokuapp.com/call/response',
-      	:StatusCallbackMethod => 'get',
+      :StatusCallback => 'http://secure-temple-4125.herokuapp.com/call/response',
+      :StatusCallbackMethod => 'get',
   		:Record => true
 		)
 end
 
 post '/call/message' do
-  #  '<?xml version="1.0" encoding="UTF-8"?>
-  #    <Response>
-  #      <Say voice="woman">Please leave a message after the tone.</Say>
-  #      <Record maxLength="20" />
-  #    </Response>'
-
   Twilio::TwiML::Response.new do |r|
-    r.Say 'hello'(
-      :voice => 'woman',
-      )
+    r.Say(:voice => 'woman') 'What time is it?'
   end.text
 end
 
