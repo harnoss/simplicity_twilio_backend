@@ -73,9 +73,8 @@ post '/call/message' do
   #    </Response>'
 
   Twilio::TwiML::Response.new do |r|
-    r.Say(
+    r.Say 'hello'(
       :voice => 'woman',
-      :plain_text => 'hello'
       )
   end.text
 end
