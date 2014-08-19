@@ -1,0 +1,34 @@
+<div class="container">
+  <h1>Welcome to the Twilio App for Simplicity!</h1>
+</div>
+
+<h2> Message log </h2>
+
+<%if @messages %>
+<table>
+  <th> MessageSID </th>
+  <th> Text </th>
+  <% @messages.each do |message| %>
+    <tr>
+      <td> <%= message.messagesid %> </td>
+      <td> <%= message.text %> </td>
+    </tr>
+  <% end %>
+</table>
+<%end%>
+
+
+<h2> Call log </h2>
+
+<%if @calls %>
+<table>
+  <th> CallSID </th>
+  <th> Record </th>
+  <% @calls.each do |call| %>
+    <tr>
+      <td> <%= call.callsid %> </td>
+      <td> <%= call.record %> </td>
+    </tr>
+  <% end %>
+</table>
+<%end%>
