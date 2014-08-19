@@ -75,7 +75,12 @@ get '/call/response' do
     @message.save!
 end
 
-
+get 'call/record'
+  response.headers['Access-Control-Allow-Origin'] = "*"
+  @calls = Call.all
+  @last_call_record = calls.last.record
+  {record: @last_call_record}
+end
   
 # Get your Account Sid and Auth Token from twilio.com/user/account
 
