@@ -65,6 +65,7 @@ get '/call/new' do
 end
 
 get '/call/message' do
+    p 'works'
     Twilio::TwiML::Response.new do |r|
     r.Say 'Hello Monkey'
   end.text
