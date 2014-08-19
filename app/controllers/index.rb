@@ -66,16 +66,16 @@ get '/call/new' do
 end
 
 get '/call/message' do
-    '<?xml version="1.0" encoding="UTF-8"?>
-      <Response>
-        <Say voice="woman">Please leave a message after the tone.</Say>
-        <Record maxLength="20" />
-      </Response>'
+  #  '<?xml version="1.0" encoding="UTF-8"?>
+  #    <Response>
+  #      <Say voice="woman">Please leave a message after the tone.</Say>
+  #      <Record maxLength="20" />
+  #    </Response>'
 
-  #Twilio::TwiML::Response.new do |r|
-  #  r.Say "What time is it?"
+  Twilio::TwiML::Response.new do |r|
+    r.Say "What time is it?"
   #  r.Play 'http://demo.twilio.com/hellomonkey/monkey.mp3'
-  #end.text
+  end.text
   #p 'works too'
 end
 
