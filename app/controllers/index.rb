@@ -51,7 +51,7 @@ get '/call/new' do
 	@client = Twilio::REST::Client.new account_sid, auth_token
 
 	@call = @client.account.calls.create(
-  		:to => @phone,
+  		:to => '+15105081935',
 	    :from => "+15104661137",
 	    #:ApplicationSid => 'PNe1dcc8f2ffa1d1912fd7b9399c0ea49a',
   		#:url => 'http://dry-fortress-5128.herokuapp.com/call/response',
@@ -65,6 +65,9 @@ get '/call/new' do
 end
 
 get '/call/message' do
+    Twilio::TwiML::Response.new do |r|
+    r.Say 'Hello Monkey'
+  end.text
   erb :call
 end
 
