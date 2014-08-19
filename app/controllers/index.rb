@@ -51,7 +51,7 @@ get '/call/new' do
 	@client = Twilio::REST::Client.new account_sid, auth_token
 
 	@call = @client.account.calls.create(
-  		:to => '+15105081935',
+  		:to => @phone,
 	    :from => "+15104661137",
   		:url => 'http://secure-temple-4125.herokuapp.com/call/message',
       :StatusCallback => 'http://secure-temple-4125.herokuapp.com/call/response',
@@ -62,7 +62,7 @@ end
 
 post '/call/message' do
   Twilio::TwiML::Response.new do |r|
-    r.Say 'What time is it?', :voice => 'woman', :loop => 10
+    r.Say 'What time is it?', :voice => 'man', :loop => 5
   end.text
 end
 
