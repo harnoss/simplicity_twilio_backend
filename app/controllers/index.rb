@@ -53,15 +53,17 @@ get '/call/new' do
 	@call = @client.account.calls.create(
   		:to => @phone,
 	    :from => "+15104661137",
-	    #:ApplicationSid => 'PNe1dcc8f2ffa1d1912fd7b9399c0ea49a',
-  		#:url => 'http://dry-fortress-5128.herokuapp.com/call/response',
-  		:url => 'http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient',
-  		#:method => "GET",
-  		#:ApplicationSid => 'AP7c4573a2127b25eb675bede58759da0f'
-      	:StatusCallback => 'http://dry-fortress-5128.herokuapp.com/call/response',
-      	:StatusCallbackMethod => 'get',
+  		:url => 'http://secure-temple-4125.herokuapp.com/call/message',
+      :StatusCallback => 'http://secure-temple-4125.herokuapp.com/call/response',
+      :StatusCallbackMethod => 'get',
   		:Record => true
 		)
+end
+
+post '/call/message' do
+  Twilio::TwiML::Response.new do |r|
+    r.Say 'What time is it?', :voice => 'man', :loop => 5
+  end.text
 end
 
 get '/call/response' do
