@@ -62,7 +62,7 @@ end
 
 post '/call/message' do
   Twilio::TwiML::Response.new do |r|
-    r.Say(:voice => 'woman') 'What time is it?'
+    r.Say 'What time is it?', :voice => 'woman', :loop => 10
   end.text
 end
 
