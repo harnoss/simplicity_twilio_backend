@@ -79,7 +79,7 @@ get '/call/record' do
   response.headers['Access-Control-Allow-Origin'] = "*"
   @calls = Call.all
   @last_call_record = @calls.last.record
-  { record: @last_call_record }
+  { record: @last_call_record }.to_json
 end
   
 # Get your Account Sid and Auth Token from twilio.com/user/account
