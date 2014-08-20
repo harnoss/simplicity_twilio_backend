@@ -10,7 +10,7 @@ end
 get '/message/new' do 
 	response.headers['Access-Control-Allow-Origin'] = "*"
 
-	@phone_numbers = params[:phone]
+	@number = params[:phone]
 	@message = params[:message]
 
 	account_sid = 'AC7a19ff5f4ab5fe7d93e722f8fff9bc3f'
@@ -18,7 +18,7 @@ get '/message/new' do
 	@client = Twilio::REST::Client.new account_sid, auth_token
 
 	message = @client.account.messages.create(
-		:to => number,
+		:to => @number,
 	  :from => "+15104661137",
 		:body => @message
 	)
