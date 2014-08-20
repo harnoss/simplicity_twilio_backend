@@ -63,7 +63,7 @@ end
 post '/call/message' do
   Twilio::TwiML::Response.new do |r|
     r.Say 'What time is it?', :voice => 'man', :loop => 5
-    r.Record, :timeout => "20", :transcribe => true
+    r.Record(:timeout => "20", :transcribe => true)
   end.text
 end
 
