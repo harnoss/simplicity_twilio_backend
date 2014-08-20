@@ -17,14 +17,12 @@ get '/message/new' do
 	auth_token = '7d19dc48b3fad97e4b1a001541cb9a5e'
 	@client = Twilio::REST::Client.new account_sid, auth_token
 
-	@phone_numbers.each do |number|
-		message = @client.account.messages.create(
-			:to => number,
-	    :from => "+15104661137",
-			:body => @message,
-	    )
+	message = @client.account.messages.create(
+		:to => number,
+	  :from => "+15104661137",
+		:body => @message
+	)
 	puts message.to
-	end
 end
 
 get '/message/response' do
